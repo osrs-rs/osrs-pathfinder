@@ -1,0 +1,18 @@
+[package]
+name = "osrs-pathfinder"
+version = "0.0.0"
+edition = "2021"
+description = "A pathfinder for Oldschool Runescape."
+repository = "https://github.com/runecore/osrs-pathfinder"
+license = "MIT"
+keywords = ["osrs","runescape","pathfinder","pathfinding"]
+categories = ["development-tools"]
+readme = "README.md"
+exclude = [
+    ".github/*",
+    ".gitignore",
+]
+
+[dependencies]
+byteorder = "1"
+pathfinding = "3"
