@@ -16,3 +16,4 @@ exclude = [
 [dependencies]
 byteorder = "1"
 pathfinding = "3"
+rs-cache = "0.8"
