@@ -3,14 +3,14 @@
 use pathfinding::prelude::bfs;
 use std::collections::HashMap;
 
-static WEST: (i32, i32) = (-1, 0);
-static EAST: (i32, i32) = (1, 0);
-static SOUTH: (i32, i32) = (0, -1);
-static NORTH: (i32, i32) = (0, 1);
-static SOUTH_WEST: (i32, i32) = (-1, -1);
-static SOUTH_EAST: (i32, i32) = (1, -1);
-static NORTH_WEST: (i32, i32) = (-1, 1);
-static NORTH_EAST: (i32, i32) = (1, 1);
+static WEST: Direction = (-1, 0);
+static EAST: Direction = (1, 0);
+static SOUTH: Direction = (0, -1);
+static NORTH: Direction = (0, 1);
+static SOUTH_WEST: Direction = (-1, -1);
+static SOUTH_EAST: Direction = (1, -1);
+static NORTH_WEST: Direction = (-1, 1);
+static NORTH_EAST: Direction = (1, 1);
 
 static DEFAULT_PATHFINDING_MAX_RANGE: i32 = 64;
 
@@ -20,6 +20,7 @@ pub struct CollisionMap {
 }
 
 type Coordinate = (i32, i32, i32);
+type Direction = (i32, i32);
 
 pub struct Pathfinder {}
 
@@ -82,7 +83,7 @@ fn check_successor(
     coord: &Coordinate,
     collision_map: &CollisionMap,
     successors: &mut Vec<Coordinate>,
-    direction: (i32, i32),
+    direction: Direction,
 ) {
     let current_coordinate: Coordinate = (coord.0 + direction.0, coord.1 + direction.1, coord.2);
 
