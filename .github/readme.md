@@ -29,4 +29,4 @@ This repository is open for contributions. For bigger changes it is advised to [
 
 `osrs-pathfinder` is distributed under the terms of the MIT license.
 
-See [LICENSE](LICENSE) for details.
+See [LICENSE](license-mit) for details.
