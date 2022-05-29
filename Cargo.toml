@@ -16,3 +16,4 @@ exclude = [
 [dependencies]
 pathfinding = "3"
 rs-cache = "0.8"
+anyhow = "1"

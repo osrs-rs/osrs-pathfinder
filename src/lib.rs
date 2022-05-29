@@ -1,6 +1,8 @@
 //! A Rust library for the pathfinder in Oldschool Runescape.
 
+use anyhow::Result;
 use pathfinding::prelude::bfs;
+use rscache::Cache;
 use std::collections::HashMap;
 
 static WEST: Direction = (-1, 0);
@@ -34,6 +36,15 @@ impl Pathfinder {
     // TODO: Take the cache as input and then load collision (along with XTEA keys too)
     pub fn new() -> Pathfinder {
         Pathfinder {}
+    }
+
+    pub fn from_cache(cache: &str) -> Result<Pathfinder> {
+        // Load the cache
+        let cache_file = Cache::new(cache)?;
+
+        // Load all pathfinding related data
+
+        Ok(Pathfinder {})
     }
 
     pub fn find_path(
