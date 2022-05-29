@@ -2,7 +2,10 @@
 
 use anyhow::Result;
 use pathfinding::prelude::bfs;
-use rscache::Cache;
+use rscache::{
+    loader::osrs::{LocationLoader, MapLoader},
+    Cache,
+};
 use std::collections::HashMap;
 
 static WEST: Direction = (-1, 0);
@@ -43,6 +46,11 @@ impl Pathfinder {
         let cache_file = Cache::new(cache)?;
 
         // Load all pathfinding related data
+        let mut loc_loader = LocationLoader::new(&cache_file);
+        let mut map_loader = MapLoader::new(&cache_file);
+
+        let loc_lumbridge = loc_loader.load(12850, &[12, 12, 12, 12])?;
+        let map_lumbridge = map_loader.load(12850)?;
 
         Ok(Pathfinder {})
     }
