@@ -49,8 +49,8 @@ impl Pathfinder {
         let mut loc_loader = LocationLoader::new(&cache_file);
         let mut map_loader = MapLoader::new(&cache_file);
 
-        let loc_lumbridge = loc_loader.load(12850, &[12, 12, 12, 12])?;
-        let map_lumbridge = map_loader.load(12850)?;
+        /*let loc_lumbridge = loc_loader.load(12850, &[12, 12, 12, 12])?;
+        let map_lumbridge = map_loader.load(12850)?;*/
 
         Ok(Pathfinder {})
     }
