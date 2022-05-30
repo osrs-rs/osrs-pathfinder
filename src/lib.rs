@@ -9,11 +9,10 @@ use rscache::{
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
-#[derive(Serialize, Deserialize)]
-struct Person {
-    name: String,
-    age: u8,
-    phones: Vec<String>,
+#[derive(Deserialize)]
+struct XteasJsonMap {
+    pub mapsquare: i32,
+    pub keys: Vec<i32>,
 }
 
 static WEST: Direction = (-1, 0);
