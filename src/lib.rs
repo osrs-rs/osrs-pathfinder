@@ -6,7 +6,15 @@ use rscache::{
     loader::osrs::{LocationLoader, MapLoader},
     Cache,
 };
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+
+#[derive(Serialize, Deserialize)]
+struct Person {
+    name: String,
+    age: u8,
+    phones: Vec<String>,
+}
 
 static WEST: Direction = (-1, 0);
 static EAST: Direction = (1, 0);
