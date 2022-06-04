@@ -75,6 +75,19 @@ impl Pathfinder {
             |p| p == &end,
         )
     }
+
+    pub fn find_path_smart(
+        &self,
+        start: Coordinate,
+        end: Coordinate,
+        collision_map: &CollisionMap,
+    ) -> Option<Vec<Coordinate>> {
+        bfs(
+            &start,
+            |p| get_successors(p, &start, collision_map),
+            |p| p == &end,
+        )
+    }
 }
 
 fn get_successors(
