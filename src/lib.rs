@@ -12,7 +12,7 @@ use std::{collections::HashMap, fs, path::Path};
 #[derive(Deserialize)]
 struct XteasJsonMap {
     pub mapsquare: i32,
-    pub keys: Vec<i32>,
+    pub key: Vec<i32>,
 }
 
 static WEST: Direction = (-1, 0);
