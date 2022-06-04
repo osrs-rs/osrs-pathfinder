@@ -7,7 +7,7 @@ use rscache::{
     Cache,
 };
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
+use std::{collections::HashMap, fs, path::Path};
 
 #[derive(Deserialize)]
 struct XteasJsonMap {
@@ -43,8 +43,18 @@ fn load_maps(cache: &Cache) -> Result<()> {
     Ok(())
 }
 
-fn load_locations(cache: &Cache) -> Result<()> {
+fn load_locations(cache: &Cache, cache_path_str: &str) -> Result<()> {
+    // Create location loader
     let mut location_loader = LocationLoader::new(cache);
+
+    // Load xtea keys
+    let cache_path = Path::new(cache_path_str);
+    let xteas_path = cache_path.join("xteas.json");
+
+    let xteas_str = fs::read_to_string(xteas_path)?;
+
+    let xteas_json_map: Vec<XteasJsonMap> = serde_json::from_str(&xteas_str)?;
+
     location_loader.load(12850, &[12, 12, 12, 12])?;
 
     Ok(())
@@ -58,7 +68,7 @@ impl Pathfinder {
 
         // Load all pathfinding related data
         load_maps(&cache)?;
-        load_locations(&cache)?;
+        load_locations(&cache, cache_path)?;
 
         Ok(Pathfinder {})
     }
