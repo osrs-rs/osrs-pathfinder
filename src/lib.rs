@@ -36,19 +36,9 @@ type Direction = (i32, i32);
 
 pub struct Pathfinder {}
 
-impl Default for Pathfinder {
-    fn default() -> Self {
-        Self::new()
-    }
-}
-
 impl Pathfinder {
     // TODO: Take the cache as input and then load collision (along with XTEA keys too)
-    pub fn new() -> Pathfinder {
-        Pathfinder {}
-    }
-
-    pub fn from_cache(cache: &str) -> Result<Pathfinder> {
+    pub fn new(cache: &str) -> Result<Pathfinder> {
         // Load the cache
         let cache_file = Cache::new(cache)?;
 
