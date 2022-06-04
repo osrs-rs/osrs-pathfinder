@@ -55,6 +55,12 @@ fn load_locations(cache: &Cache, cache_path_str: &str) -> Result<()> {
 
     let xteas_json_map: Vec<XteasJsonMap> = serde_json::from_str(&xteas_str)?;
 
+    let mut xteas_hashmap = HashMap::new();
+
+    for xtea_entry in xteas_json_map {
+        xteas_hashmap.insert(xtea_entry.mapsquare, xtea_entry.key);
+    }
+
     location_loader.load(12850, &[12, 12, 12, 12])?;
 
     Ok(())
