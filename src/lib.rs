@@ -36,18 +36,29 @@ type Direction = (i32, i32);
 
 pub struct Pathfinder {}
 
+fn load_maps(cache: &Cache) -> Result<()> {
+    let mut map_loader = MapLoader::new(cache);
+    map_loader.load(12850)?;
+
+    Ok(())
+}
+
+fn load_locations(cache: &Cache) -> Result<()> {
+    let mut location_loader = LocationLoader::new(cache);
+    location_loader.load(12850, &[12, 12, 12, 12])?;
+
+    Ok(())
+}
+
 impl Pathfinder {
     // TODO: Take the cache as input and then load collision (along with XTEA keys too)
-    pub fn new(cache: &str) -> Result<Pathfinder> {
+    pub fn new(cache_path: &str) -> Result<Pathfinder> {
         // Load the cache
-        let cache_file = Cache::new(cache)?;
+        let cache = Cache::new(cache_path)?;
 
         // Load all pathfinding related data
-        let mut loc_loader = LocationLoader::new(&cache_file);
-        let mut map_loader = MapLoader::new(&cache_file);
-
-        /*let loc_lumbridge = loc_loader.load(12850, &[12, 12, 12, 12])?;
-        let map_lumbridge = map_loader.load(12850)?;*/
+        load_maps(&cache)?;
+        load_locations(&cache)?;
 
         Ok(Pathfinder {})
     }
